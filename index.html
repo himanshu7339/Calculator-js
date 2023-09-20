@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator Me....</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 style="text-align: center">Calculator Me....!</h1>
+    <div
+      style="
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      "
+      class="container"
+    >
+      <div class="row">
+        <input
+          style="
+            margin: 0;
+            font-size: 20px;
+            border-radius: 9px;
+            padding: 11px 7px;
+          "
+          class="input"
+          type="text"
+        />
+      </div>
+      <div class="row">
+        <button class="button">C</button>
+        <button class="button">%</button>
+        <button class="button">100</button>
+        <button class="button">1000</button>
+      </div>
+      <div class="row">
+        <button class="button">7</button>
+        <button class="button">8</button>
+        <button class="button">9</button>
+        <button class="button">*</button>
+      </div>
+      <div class="row">
+        <button class="button">4</button>
+        <button class="button">5</button>
+        <button class="button">6</button>
+        <button class="button">/</button>
+      </div>
+      <div class="row">
+        <button class="button">1</button>
+        <button class="button">2</button>
+        <button class="button">3</button>
+        <button class="button">+</button>
+      </div>
+      <div class="row">
+        <button class="button">0</button>
+        <button class="button">.</button>
+        <button class="button">=</button>
+        <button class="button">-</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    console.log("Start coding...");
+    try {
+      let string = "";
+      let buttons = document.getElementsByClassName("button");
+      const buttonArray = Array.from(buttons);
+      buttonArray.forEach((button) => {
+        button.addEventListener("click", (e) => {
+          if (e.target.innerHTML == "=") {
+            try {
+              string = eval(string);
+              document.querySelector("input").value = string;
+            } catch (error) {
+              document.querySelector("input").value = "invalid expression";
+            }
+          } else if (e.target.innerHTML == "C") {
+            try {
+              string = "";
+              document.querySelector("input").value = string;
+            } catch (error) {
+              document.querySelector("input").value = "invalid expression";
+            }
+          } else {
+            try {
+              console.log(e.target.innerHTML);
+              string = string + e.target.innerHTML;
+              document.querySelector("input").value = string;
+            } catch (error) {
+              document.querySelector("input").value = "invalid expression";
+            }
+          }
+        });
+      });
+    } catch (error) {
+      console.log("invalid request");
+    }
+  </script>
+</html>
